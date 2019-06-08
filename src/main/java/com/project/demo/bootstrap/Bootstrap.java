@@ -100,8 +100,8 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 				.password("p2")
 				.build();
 
-		userRepository.save(user_1).block();
-		userRepository.save(user_2).block();
+		userRepository.save(user_1);
+		userRepository.save(user_2);
 	}
 
 	private void loadSchedules() {
@@ -114,7 +114,7 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 						.findFirst()
 						.orElse(null)
 						.getFirstName())
-				.user_id(userRepository.findById("5cfa304ecc081727901a55cf").block().getId())
+				.user_id(userRepository.findById("5cfa304ecc081727901a55cf").get().getId())
 				.build();
 
 		Schedule schedule_2 = Schedule.builder()
@@ -126,10 +126,10 @@ public class Bootstrap implements ApplicationListener<ContextRefreshedEvent> {
 						.findFirst()
 						.orElse(null)
 						.getFirstName())
-				.user_id(userRepository.findById("5cfa304ecc081727901a55cf").block().getId())
+				.user_id(userRepository.findById("5cfa304ecc081727901a55cf").get().getId())
 				.build();
 
-		scheduleRepository.save(schedule_1).block();
-		scheduleRepository.save(schedule_2).block();
+		scheduleRepository.save(schedule_1);
+		scheduleRepository.save(schedule_2);
 	}
 }
